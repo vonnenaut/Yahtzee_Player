@@ -5,16 +5,16 @@ Simplifications:  only allow discard and roll, only score against upper level
 A strategy function designed to help you choose which dice to hold after your second roll during the first turn of a game of Yahtzee. This function will consider all possible choices of dice to hold and recommend the choice that maximizes the expected value of your score after the final roll.
 
 """
-
-# Used to increase the timeout, if necessary
 import codeskulptor
 import math
 # import poc_simpletest
+
 
 NUM_DICE = 5
 NUM_DIE_SIDES = 6
 
 
+# Used to increase the timeout, if necessary
 codeskulptor.set_timeout(20)
 
 
@@ -62,7 +62,6 @@ def gen_all_sequences(outcomes, length):
 
     outcomes:  possible values of a roll (ex. -- [1,2,3,4,5,6] for a 6-sided die)
     """
-
     answer_set = set([()])
     for dummy_idx in range(length):
         temp_set = set()
@@ -164,30 +163,3 @@ def strategy(hand, num_die_sides):
             dice_to_hold = hold
 
     return (best_val, dice_to_hold)
-
-
-# def run_example():
-#     """
-#     Testing suite
-#     """
-#     # create a TestSuite object
-#     suite = poc_simpletest.TestSuite()
-
-#     # OwlTest Troubleshooting:
-#     print "\n\n-----expected_value test #6-----"
-#     suite.run_test(expected_value((2, 2), 6, 2), 5.83333333333, "Test #8:")
-
-#     print "\n\n-----score test #2-----:"
-#     hand = (4, 5)
-#     suite.run_test(score(hand), 5, "Test #9:")
-
-#     print "\n\n-----strategy test #4-----:"
-#     suite.run_test(strategy((1,), 6), (3.5, ()), "Test #10:")
-
-#     suite.run_test(strategy((1, 2, 3, 3, 4), 4),  (8.53125, (3, 3)), "Test #11:")
-
-#     print "\n"
-#     suite.report_results()
-
-
-# run_example()
